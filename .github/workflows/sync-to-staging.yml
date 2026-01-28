@@ -3,7 +3,7 @@ name: Sync to Staging
 on:
   push:
     branches:
-      - main
+      - gh-pages
 
 jobs:
   sync:
@@ -18,5 +18,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          git remote add staging https://x-access-token:${GH_TOKEN}@github.com/chschroeck/pendo-eu-crm1-dev.git
-          git push staging main:main --force
+          git remote add staging https://x-access-token:${GH_TOKEN}@github.com/ChSchroeck/pendo-eu-crm1-dev.git
+          git push staging gh-pages:main --force
