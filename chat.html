@@ -2,14 +2,14 @@
 <header>
     <!-- Pendo snippet-->
       <script src="pendo-js/pendo-snippet.js"></script>
-      
+
 </header>
 
 <body>
     <p id="output">Initial message...</p>
     <!-- Agent Analytics  -->
     <script>
-        const CONV_ID = "conv_004"
+        const CONV_ID = Math.floor(Date.now() / 1000).toString();
         // User Prompt
         console.log("User prompting")
         document.getElementById('output').textContent += '\nUser prompting';
