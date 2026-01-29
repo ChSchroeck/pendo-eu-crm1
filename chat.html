@@ -1,11 +1,17 @@
 <html>
 <header>
     <!-- Pendo snippet-->
-      <script src="pendo-js/pendo-snippet.js"></script>
+    <script src="pendo-js/pendo-snippet.js"></script>
 
 </header>
 
 <body>
+    <script>
+        pendo.track("ChatStartet", {
+            plan: "Pro Annual",
+            accountType: "Chatter"
+        });
+    </script>
     <p id="output">Initial message...</p>
     <!-- Agent Analytics  -->
     <script>
