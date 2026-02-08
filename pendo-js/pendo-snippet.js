@@ -14,20 +14,20 @@
             // Please use Strings, Numbers, or Bools for value types.
             pendo.initialize({
                 visitor: {
-                    id: "user_001", // Required if user is logged in
-                    email: "peter_pendo@schroeck-online.de", // Recommended if using Pendo Feedback, or NPS Email
-                    full_name: "Peter Pendo", // Recommended if using Pendo Feedback
-                    role: "Admin",// Optional
-                    location: "DE" //Metadata 1
+                    id: "user_003", // Required if user is logged in
+                    email: "paul_pendo@schroeck-online.de", // Recommended if using Pendo Feedback, or NPS Email
+                    full_name: "Paul Pendo", // Recommended if using Pendo Feedback
+                    role: "User",// Optional
+                    location: "UK" //Metadata 1
 
                     // You can add any additional visitor level key-values here,
                     // as long as it's not one of the above reserved names.
                 },
 
                 account: {
-                    id: "account_001", // Highly recommended, required if using Pendo Feedback or OEM Adopt
-                    name: "Schroeck GmbH",
-                    is_paying: true,
+                    id: "account_003", // Highly recommended, required if using Pendo Feedback or OEM Adopt
+                    name: "Pseudo GmbH & Co KG",
+                    is_paying: false,
                     segment: "ENT"
                     // monthly_value:// Recommended if using Pendo Feedback
                     // planLevel:    // Optional
