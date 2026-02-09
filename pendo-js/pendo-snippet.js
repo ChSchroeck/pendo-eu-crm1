@@ -29,7 +29,8 @@
                     name: "Pseudo GmbH & Co KG",
                     is_paying: false,
                     segment: "ENT",
-                    hastam: true
+                    hastam: true,
+                    industry: "Manual Synced"
                     // monthly_value:// Recommended if using Pendo Feedback
                     // planLevel:    // Optional
                     // planPrice:    // Optional
