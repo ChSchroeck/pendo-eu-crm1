@@ -12,7 +12,36 @@
             // This function creates visitors and accounts in Pendo
             // You will need to replace <visitor-id-goes-here> and <account-id-goes-here> with values you use in your app
             // Please use Strings, Numbers, or Bools for value types.
+// Visitor 1 / Account 1
             pendo.initialize({
+                visitor: {
+                    id: "user_001", // Required if user is logged in
+                    email: "peter_pendo@schroeck-online.de", // Recommended if using Pendo Feedback, or NPS Email
+                    full_name: "Peter Pendo", // Recommended if using Pendo Feedback
+                    role: "Admin",// Optional
+                    location: "DE" //Metadata 1
+
+                    // You can add any additional visitor level key-values here,
+                    // as long as it's not one of the above reserved names.
+                },
+
+                account: {
+                    id: "account_001", // Highly recommended, required if using Pendo Feedback or OEM Adopt
+                    name: "Schroeck GmbH",
+                    is_paying: true,
+                    segment: "ENT",
+                    salesforce__industry: "Through SDK"
+                    // monthly_value:// Recommended if using Pendo Feedback
+                    // planLevel:    // Optional
+                    // planPrice:    // Optional
+                    // creationDate: // Optional
+
+                    // You can add any additional account level key-values here,
+                    // as long as it's not one of the above reserved names.
+                }
+            }); 
+ 
+            /* pendo.initialize({
                 visitor: {
                     id: "user_003", // Required if user is logged in
                     email: "paul_pendo@schroeck-online.de", // Recommended if using Pendo Feedback, or NPS Email
@@ -29,7 +58,6 @@
                     name: "Pseudo GmbH & Co KG",
                     is_paying: false,
                     segment: "ENT",
-                    salesforce__industry: "Through SDK"
                     // monthly_value:// Recommended if using Pendo Feedback
                     // planLevel:    // Optional
                     // planPrice:    // Optional
@@ -38,5 +66,5 @@
                     // You can add any additional account level key-values here,
                     // as long as it's not one of the above reserved names.
                 }
-            });
+            }); */
         })('7d66e821-ff08-4795-a340-1a3ebbd3df49');
