@@ -929,6 +929,10 @@
         import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
         createChat({
             webhookUrl: 'https://n8n.schroeck-online.de/webhook/ad08b97f-ff60-441c-976c-bf04ebb3f84c/chat',
+            metadata: {
+                visitorId: window.pendo.getVisitorId(),
+                accountId: window.pendo.getAccountId?.() || ''
+            },
             mode: 'window',
             showWelcomeScreen: false,
             initialMessages: [
