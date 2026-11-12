@@ -927,28 +927,35 @@
     <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
     <script type="module">
         import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-        createChat({
-            webhookUrl: 'https://n8n.schroeck-online.de/webhook/ad08b97f-ff60-441c-976c-bf04ebb3f84c/chat',
-            metadata: {
-                visitorId: window.pendo.getVisitorId(),
-                accountId: window.pendo.getAccountId?.() || ''
-            },
-            mode: 'window',
-            showWelcomeScreen: false,
-            initialMessages: [
-                'Hi! 👋',
-                'How can I help you today?'
-            ],
-            i18n: {
-                en: {
-                    title: 'Assistant',
-                    subtitle: 'Ask me about this site.',
-                    footer: '',
-                    getStarted: 'New conversation',
-                    inputPlaceholder: 'Type your question...'
+        function startChat() {
+            createChat({
+                webhookUrl: 'https://n8n.schroeck-online.de/webhook/ad08b97f-ff60-441c-976c-bf04ebb3f84c/chat',
+                metadata: {
+                    visitorId: window.pendo.getVisitorId(),
+                    accountId: window.pendo.getAccountId?.() || ''
+                },
+                mode: 'window',
+                showWelcomeScreen: false,
+                initialMessages: [
+                    'Hi! 👋',
+                    'How can I help you today?'
+                ],
+                i18n: {
+                    en: {
+                        title: 'Assistant',
+                        subtitle: 'Ask me about this site.',
+                        footer: '',
+                        getStarted: 'New conversation',
+                        inputPlaceholder: 'Type your question...'
+                    }
                 }
-            }
-        });
+            });
+        }
+        // Start once Pendo is ready, with a simple fallback poll
+        (function wait(tries = 0) {
+            if (window.pendo && window.pendo.getVisitorId) return startChat();
+            if (tries < 50) setTimeout(() => wait(tries + 1), 200);
+        })();
     </script>
 
 </body>
