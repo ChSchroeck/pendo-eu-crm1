@@ -927,6 +927,7 @@
     <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
     <script type="module">
         import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
         function startChat() {
             createChat({
                 webhookUrl: 'https://n8n.schroeck-online.de/webhook/ad08b97f-ff60-441c-976c-bf04ebb3f84c/chat',
@@ -936,25 +937,28 @@
                 },
                 mode: 'window',
                 showWelcomeScreen: false,
-                initialMessages: [
-                    'Hi! 👋',
-                    'How can I help you today?'
-                ],
+                initialMessages: ['Hi! 👋', 'How can I help you today?'],
                 i18n: {
                     en: {
-                        title: 'Assistant',
-                        subtitle: 'Ask me about this site.',
-                        footer: '',
-                        getStarted: 'New conversation',
-                        inputPlaceholder: 'Type your question...'
+                        title: 'Assistant', subtitle: 'Ask me about this site.', footer: '',
+                        getStarted: 'New conversation', inputPlaceholder: 'Type your question...'
                     }
                 }
             });
         }
-        // Start once Pendo is ready, with a simple fallback poll
+
+        const isIdentified = () => {
+            const p = window.pendo;
+            if (!p || !p.isReady || !p.isReady()) return false;
+            const id = p.getVisitorId && p.getVisitorId();
+            return !!id && !String(id).startsWith('_PENDO_T_');
+        };
+
         (function wait(tries = 0) {
-            if (window.pendo && window.pendo.getVisitorId) return startChat();
-            if (tries < 50) setTimeout(() => wait(tries + 1), 200);
+            if (isIdentified()) return startChat();
+            if (tries < 50) return setTimeout(() => wait(tries + 1), 200);
+            // Timeout (10 s): start anyway, visitor stays anonymous
+            if (window.pendo && window.pendo.getVisitorId) startChat();
         })();
     </script>
 
